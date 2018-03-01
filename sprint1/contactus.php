@@ -1,6 +1,14 @@
+<?php
+require_once("Template.php");
+$page = new Template("Index");
+$page->setHeadSection("<script type='text/javascript' src='hello.js'></script>");
+$page->setHeadSection("<link rel='stylesheet' href='prettylab.css'>");
+$page->setTopSection();
+$page->setBottomSection();
+print $page->getTopSection();
 
-<!doctype html>
-<html>
+
+print "
 <head><title>Index</title>
 <script type='text/javascript' src='hello.js'></script>
 <link rel='stylesheet' href='prettylab.css'>
@@ -13,6 +21,7 @@
     <a href=asgnhome.php>Home</a>
     <a href=asgnabout.php>About</a>
     <a href=contactus.php>Contact</a>
+	<a href=booksearch.php>Book Search</a>
   </nav>
 </header>
 <main>
@@ -45,6 +54,6 @@
       <p></p>
     </div>
   </aside>
-</main></body>
-</html>
-<footer>Lab 01 Kline </footer>
+</main></body>";
+print $page->getBottomSection();
+print "<footer>Lab 01 Kline </footer>";

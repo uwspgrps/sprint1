@@ -12,8 +12,9 @@ print "<header>
   <h1>About Us page Assignment 01</h1>
   <nav>
 	<a href=asgnhome.php>Home</a>
-    <a href='asgnhome1.php'>About</a>
-    <a href='contactus.php'>Contact</a>
+    <a href=asgnabout.php>About</a>
+    <a href=contactus.php>Contact</a>
+	<a href=booksearch.php>Book Search</a>
   </nav>
 </header>
 <main>

@@ -25,7 +25,7 @@ print "
     <article>
       <h2>Search for a Book</h2>
  
-	<form method='POST' action='thanks.php' onsubmit='return validateForm()'>
+	<form method='POST' action='results.php' onsubmit='return validateForm()'>
 	Enter an ISBN, Author or Title:  <input type='text' name='name' id='name' ><br />
 	
 	<br />

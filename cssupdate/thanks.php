@@ -1,17 +1,20 @@
 
 <?php
 require_once("Template.php");
-$page = new Template("Index");
-$page->setHeadSection("<script type='text/javascript' src='hello.js'></script>");
+$page = new Template("Thank You");
 $page->setHeadSection("<link rel='stylesheet' href='prettylab.css'>");
 $page->setTopSection();
 $page->setBottomSection();
 print $page->getTopSection();
-print "<header>
+
+
+print "
+
+<header>
 	
   <h1>Thank you</h1>
   <nav>
-    <a href=asgnhome.php>Home</a>
+    <a href=index.php>Home</a>
     <a href=asgnabout.php>About</a>
     <a href=contactus.php>Contact</a>
 	<a href=booksearch.php>Search</a>
@@ -39,6 +42,8 @@ print "<header>
       <p></p>
     </div>
   </aside>
-</main>";
-print $page->getBottomSection();
-print "<footer>Sprint 1 Ken Lucas Peter </footer>";
+	<footer>Sprint 1 Ken Lucas Peter</footer>
+	</main>";
+	print $page->getBottomSection();
+?>
+ 

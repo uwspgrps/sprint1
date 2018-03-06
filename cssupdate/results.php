@@ -48,11 +48,11 @@ if(!empty($_POST['name'])){
 	$query = "SELECT booktitle, isbn, author FROM bookinfo WHERE booktitle LIKE '%{$safeInput}%' OR isbn LIKE '%{$safeInput}%' OR author LIKE '%{$safeInput}%'";
 	$result = $db->dbCall($query);
 	$position=0;
-	print "<table style='width:100%'>";
-	print "<tr>";
+	print "<body><table style='width:100%'>";
+	print "<main><header><tr>";
 	print "<th>Book Title</th>
 		  <th>ISBN</th>
-		  <th>Author</th>";
+		  <th>Author</th></header>";
 	print "</tr>";
 	while($position < count($result)){
 		print "<tr>";
@@ -68,7 +68,7 @@ if(!empty($_POST['name'])){
 		print "</tr>";
 		$position++;
 	}
-	print "</table>";
+	print "</table></body>";
 }else{
 	print "You must fill in a search term";
 }

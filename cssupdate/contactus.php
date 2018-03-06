@@ -1,11 +1,11 @@
 <?php
 require_once("Template.php");
-$page = new Template("Index");
-$page->setHeadSection("<script type='text/javascript' src='hello.js'></script>");
+$page = new Template("ContactUs");
 $page->setHeadSection("<link rel='stylesheet' href='prettylab.css'>");
 $page->setTopSection();
 $page->setBottomSection();
 print $page->getTopSection();
+
 
 
 print "
@@ -50,6 +50,9 @@ print "
       <p></p>
     </div>
   </aside>
-</main></body>";
+  
+ <footer>Sprint 1 Ken Lucas Peter</footer>
+</main>";
 print $page->getBottomSection();
-print "<footer>Sprint 1 Ken Lucas Peter </footer>";
+
+?>

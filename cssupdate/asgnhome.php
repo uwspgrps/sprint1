@@ -11,12 +11,13 @@ $page->setBottomSection();
 print $page->getTopSection();
 
 print "
-<main>
+<!DOCTYPE HTML>
+
 <header>
 	
   <h1>Home page of Sprint1</h1>
   <nav>
-	<a href=asgnhome.php>Home</a>
+	<a href=index.php>Home</a>
     <a href=asgnabout.php>About</a>
     <a href=contactus.php>Contact</a>
 	<a href=booksearch.php>Search</a>
@@ -45,6 +46,6 @@ print "
       <p></p>
     </div>
   </aside>
-</main>";
+  <footer>Sprint 1 Ken Lucas Peter</footer>;"
+
 print $page->getBottomSection();
-print "<footer>Sprint 1 Ken Lucas Peter </footer>";

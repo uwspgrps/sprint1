@@ -15,7 +15,7 @@ print "
 	
   <h1>Contact us Sprint 1</h1>
   <nav>
-    <a href=asgnhome.php>Home</a>
+    <a href=index.php>Home</a>
     <a href=asgnabout.php>About</a>
     <a href=contactus.php>Contact</a>
 	<a href=booksearch.php>Search</a>

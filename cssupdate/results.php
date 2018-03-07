@@ -4,8 +4,8 @@ require_once("Template.php");
 require_once("DB.class.php");
 
 $page = new Template("DB Lab");
-$page->setTopSection();
 $page->setHeadSection("<link rel='stylesheet' href='prettylab.css'>");
+$page->setTopSection();
 $page->setBottomSection();
 
 print $page->getTopSection();
@@ -48,11 +48,11 @@ if(!empty($_POST['name'])){
 	$query = "SELECT booktitle, isbn, author FROM bookinfo WHERE booktitle LIKE '%{$safeInput}%' OR isbn LIKE '%{$safeInput}%' OR author LIKE '%{$safeInput}%'";
 	$result = $db->dbCall($query);
 	$position=0;
-	print "<body><table style='width:100%'>";
-	print "<main><header><tr>";
+	print "<table style='width:50%'>";
+	print "<tr>";
 	print "<th>Book Title</th>
 		  <th>ISBN</th>
-		  <th>Author</th></header>";
+		  <th>Author</th>";
 	print "</tr>";
 	while($position < count($result)){
 		print "<tr>";
@@ -68,7 +68,7 @@ if(!empty($_POST['name'])){
 		print "</tr>";
 		$position++;
 	}
-	print "</table></body>";
+	print "</table>";
 }else{
 	print "You must fill in a search term";
 }

@@ -72,6 +72,15 @@ div h3 {
 div p {
   color: #D3D3D3; dimgrey
 }
+table {
+	border-collapse: collapse;
+}
+table, th, td {
+	border: 1px solid black;
+}
+th, td {
+	text-align: left;
+}
 main {
   background: gainsboro; 
   padding-bottom: 1.5em;

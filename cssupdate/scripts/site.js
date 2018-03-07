@@ -21,7 +21,7 @@ $(document).ready(function(){
                 email: 'Invalid email address.'
             },
             commentsFeedback: {
-                required: 'Message section is required.'
+                required: 'Feedback section is required.'
             }
         }
     });

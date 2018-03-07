@@ -1,13 +1,16 @@
 <?php
 require_once("Template.php");
 $page = new Template("About");
-$page->setHeadSection("<link rel='stylesheet' href='styles/prettylab.css'>");
+$page->setHeadSection("<link rel='stylesheet' href='styles/prettylab.css'>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js'></script>
+    <script type='text/javascript'' src='scripts/site.js'></script>");
 $page->setTopSection();
 $page->setBottomSection();
 print $page->getTopSection();
 print "
 <header>	
-  <h1>About Us Sprint 1</h1>
+  <h1>Contact Us Sprint 1</h1>
   <nav>
 	<a href=index.php>Home</a>
     <a href=asgnabout.php>About</a>
@@ -18,19 +21,24 @@ print "
 <main>
   <section>
     <article>
-      <h2>Lorem Ipsum</h2>
-	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
-	  magna aliqua. Viverra aliquet eget sit amet tellus. Mi ipsum faucibus vitae aliquet. Nibh tortor id aliquet lectus 
-	  proin nibh nisl condimentum id. Sagittis purus sit amet volutpat consequat mauris nunc congue. Nisl condimentum id 
-	  venenatis a condimentum. Nisl nunc mi ipsum faucibus. Neque viverra justo nec ultrices dui sapien 
-	  eget mi proin. Tortor vitae purus faucibus ornare suspendisse. Ullamcorper a lacus vestibulum sed arcu non odio.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-	  et dolore magna aliqua. Non curabitur gravida arcu ac. Egestas tellus rutrum tellus pellentesque eu tincidunt. 
-	  Nunc mattis enim ut tellus elementum. Pellentesque habitant morbi tristique senectus et netus et malesuada. 
-	  Eget felis eget nunc lobortis mattis aliquam. Massa tincidunt dui ut ornare lectus. Libero nunc consequat 
-	  interdum varius sit amet. Quisque non tellus orci ac auctor augue mauris. Sem integer vitae justo eget. Metus 
-	  vulputate eu scelerisque felis imperdiet proin fermentum leo vel. Tincidunt nunc pulvinar sapien et ligula 
-	  ullamcorper malesuada. Mattis nunc sed blandit libero volutpat.</p>
+      <h2>Contact us</h2>
+	<form id='contactForm' method='POST' action='thanks.php' >        
+	    <div class='input'>
+            <label class='col-md-3 col-form-label'>Name:</label>
+            <input type='text' name='name' id='name' required='required' value='' size='25' maxlength='50' />
+        </div>
+        <div class='input'>
+            <label class='col-md-3 col-form-label'>Email:</label>
+            <input type='text' name='email' id='email' size='25' required='required' maxlength='75'/>
+        </div>
+        <div class='input'>
+            <label class='col-md-10 offset-1 col-form-label'>Please leave your feedback below.</label>
+            <textarea class='col-md-8 offset-2 commentsFeedback' name='commentsFeedback' id='commentsFeedback' maxlength='500'></textarea>
+        </div>      
+        <div class='input'>
+            <input class='btn btn-primary col-md-2 offset-5' id='submitBtn' type='button' value='Submit' />
+        </div>         
+	</form>
     </article>
   </section>
   <aside>

@@ -1,21 +1,15 @@
 <?php
 require_once("Template.php");
-$page = new Template("ContactUs");
-$page->setHeadSection("<link rel='stylesheet' href='prettylab.css'>");
+$page = new Template("About");
+$page->setHeadSection("<link rel='stylesheet' href='styles/prettylab.css'>");
 $page->setTopSection();
 $page->setBottomSection();
 print $page->getTopSection();
-
-
-
 print "
-
-<body>
-<header>
-	
-  <h1>Contact us Sprint 1</h1>
+<header>	
+  <h1>About Us Sprint 1</h1>
   <nav>
-    <a href=index.php>Home</a>
+	<a href=index.php>Home</a>
     <a href=asgnabout.php>About</a>
     <a href=contactus.php>Contact</a>
 	<a href=booksearch.php>Search</a>
@@ -24,35 +18,45 @@ print "
 <main>
   <section>
     <article>
-      <h2>Contact us</h2>
-	<form method='POST' action='thanks.php' onsubmit='return validateForm()'>
-	Name:  <input type='text' name='name' id='name' ><br />
-	Enter your email:  <input type='text' name='email' id='email' required ><br />
-	Tell us about your experience: <input type='text' name='input' id='textbox' required><br />
-	<br />
-	<input type='submit' name='submit'>
-	</form>
-      <p></p>
-      <p></p>
+      <h2>Lorem Ipsum</h2>
+	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
+	  magna aliqua. Viverra aliquet eget sit amet tellus. Mi ipsum faucibus vitae aliquet. Nibh tortor id aliquet lectus 
+	  proin nibh nisl condimentum id. Sagittis purus sit amet volutpat consequat mauris nunc congue. Nisl condimentum id 
+	  venenatis a condimentum. Nisl nunc mi ipsum faucibus. Neque viverra justo nec ultrices dui sapien 
+	  eget mi proin. Tortor vitae purus faucibus ornare suspendisse. Ullamcorper a lacus vestibulum sed arcu non odio.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+	  et dolore magna aliqua. Non curabitur gravida arcu ac. Egestas tellus rutrum tellus pellentesque eu tincidunt. 
+	  Nunc mattis enim ut tellus elementum. Pellentesque habitant morbi tristique senectus et netus et malesuada. 
+	  Eget felis eget nunc lobortis mattis aliquam. Massa tincidunt dui ut ornare lectus. Libero nunc consequat 
+	  interdum varius sit amet. Quisque non tellus orci ac auctor augue mauris. Sem integer vitae justo eget. Metus 
+	  vulputate eu scelerisque felis imperdiet proin fermentum leo vel. Tincidunt nunc pulvinar sapien et ligula 
+	  ullamcorper malesuada. Mattis nunc sed blandit libero volutpat.</p>
     </article>
   </section>
   <aside>
     <div class=capsule>
-      <h3>Sidebar</h3>
-      <p></p>
+      <h3>Volutpat</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+	  Morbi enim nunc faucibus a. Mauris a diam maecenas sed enim ut sem viverra. In metus vulputate eu scelerisque felis. Platea dictumst 
+	  quisque sagittis purus sit amet volutpat consequat mauris. Lacus suspendisse faucibus interdum posuere. </p>
+    </div>  
+    <div class=capsule>
+      <h3>Aliquam </h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+	  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+	  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
     </div>
     <div class=capsule>
-      <h3>Sidebar</h3>
-      <p></p>
-    </div>
-    <div class=capsule>
-      <h3>Sidebar</h3>
-      <p></p>
+      <h3>Malesuada </h3>
+      <p>Aliquet risus feugiat in ante metus. Urna id volutpat lacus laoreet non curabitur. Auctor elit sed vulputate mi sit amet mauris 
+	  commodo quis. Blandit turpis cursus in hac habitasse platea dictumst quisque. Malesuada nunc vel risus commodo viverra.
+	  Viverra mauris in aliquam sem fringilla ut morbi.  Pellentesque habitant morbi tristique senectus et netus et malesuada. 
+	  Eget felis eget nunc lobortis mattis aliquam. Massa tincidunt dui ut ornare lectus. Libero nunc consequat 
+	  interdum varius sit amet.</p>
     </div>
   </aside>
-  
- <footer>Sprint 1 Ken Lucas Peter</footer>
-</main>";
+  </main>
+<footer>Sprint 1 Ken Lucas Peter</footer>
+";
 print $page->getBottomSection();
-
 ?>

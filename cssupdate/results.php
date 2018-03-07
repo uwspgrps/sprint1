@@ -1,13 +1,10 @@
 <?php
-
 require_once("Template.php");
 require_once("DB.class.php");
-
 $page = new Template("DB Lab");
-$page->setHeadSection("<link rel='stylesheet' href='prettylab.css'>");
+$page->setHeadSection("<link rel='stylesheet' href='styles/prettylab.css'>");
 $page->setTopSection();
 $page->setBottomSection();
-
 print $page->getTopSection();
 /*
 print "<table style="width:100%">
@@ -31,14 +28,11 @@ print "<table style="width:100%">
 </table>";
 */
 $db = new DB();
-
 //var_dump($db);
-
 if (!$db->getConnStatus()) {
   print "An error has occurred with connection\n";
   exit;
 }
-
 //get POST input and assign to variable here
 //sanitize input
 if(!empty($_POST['name'])){
@@ -72,8 +66,5 @@ if(!empty($_POST['name'])){
 }else{
 	print "You must fill in a search term";
 }
-
-
-
 print $page->getBottomSection();
 

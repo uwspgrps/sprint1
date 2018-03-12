@@ -18,8 +18,8 @@ print "
 <main>
   <section>
     <article>
-	  <p> Thanks for your feedback</p>
-      <p>We will get back to you as soon as possible</p>
+	  <p> Thanks for your feedback.</p>
+      <p>We will reply back to you as soon as possible.</p>
       <p></p>
     </article>
   </section>
@@ -28,3 +28,4 @@ print "
 	";
 	print $page->getBottomSection();
 ?>
+ 

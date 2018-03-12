@@ -1,6 +1,7 @@
 <?php
 require_once("Template.php");
-$page = new Template("About");
+require_once("DB.class.php");
+$page = new Template("Contact Us");
 $page->setHeadSection("<link rel='stylesheet' href='styles/prettylab.css'>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js'></script>
@@ -8,6 +9,44 @@ $page->setHeadSection("<link rel='stylesheet' href='styles/prettylab.css'>
 $page->setTopSection();
 $page->setBottomSection();
 print $page->getTopSection();
+
+$db = new DB();
+if (!$db->getConnStatus()) {
+  print "An error has occurred with connection\n";
+  exit;
+}
+
+if(!empty($_POST)){
+    $link = $db->returnDB();
+    $firstName = $_POST['firstName'];    
+    $lastName = $_POST['lastName'];
+    $phoneNumber = $_POST['phoneNumber'];        
+    $email = $_POST['email'];
+    $feedback = $_POST['feedback'];
+    
+    $sanitizedEmail = filter_var($email, FILTER_SANITIZE_EMAIL);    
+    if (filter_var($sanitizedEmail, FILTER_VALIDATE_EMAIL)) {
+          $safeEmail = mysqli_real_escape_string($link,$email);
+    }      
+        
+    $safeFirstName = mysqli_real_escape_string($link,$firstName);
+    $safeLastName = mysqli_real_escape_string($link,$lastName);
+    $safePhoneNumberName = mysqli_real_escape_string($link,$phoneNumber);            
+    $safeFeedback = mysqli_real_escape_string($link,$feedback);
+    $sqlInsert = "INSERT INTO contact_us (insertTime, firstName, lastName, phoneNumber, email, feedback)
+                    VALUES
+                    (now(), '$safeFirstName', '$safeLastName', '$safePhoneNumberName', '$safeEmail', '$safeFeedback')";
+    $insertResult = mysqli_query($link,$sqlInsert);
+
+    if($insertResult){
+        header("Location: thanks.php");
+        exit();
+    }  
+    else{
+        header('Location: '.$_SERVER['REQUEST_URI']);
+    }
+}
+
 print "
 <header>	
   <h1>Contact Us Sprint 1</h1>
@@ -21,19 +60,27 @@ print "
 <main>
   <section>
     <article>
-      <h2>Contact us</h2>
-	<form id='contactForm' method='POST' action='thanks.php' >        
+      <h2>Contact Us</h2>
+	<form id='contactForm' method='POST' action='contactus.php' >        
 	    <div class='input'>
-            <label class='col-md-3 col-form-label'>Name:</label>
-            <input type='text' name='name' id='name' required='required' value='' size='25' maxlength='50' />
+            <label class='col-md-3 col-form-label'>First Name:</label>
+            <input type='text' name='firstName' id='firstName' required='required' value='' size='25' maxlength='50' />
+        </div>        
+	    <div class='input'>
+            <label class='col-md-3 col-form-label'>Last Name:</label>
+            <input type='text' name='lastName' id='lastName' required='required' value='' size='25' maxlength='50' />
         </div>
+	    <div class='input'>
+            <label class='col-md-3 col-form-label'>Phone Number:</label>
+            <input type='text' name='phoneNumber' id='phoneNumber' required='required' value='' size='25' maxlength='10'/>
+        </div>                       
         <div class='input'>
             <label class='col-md-3 col-form-label'>Email:</label>
             <input type='text' name='email' id='email' size='25' required='required' maxlength='75'/>
         </div>
         <div class='input'>
             <label class='col-md-10 offset-1 col-form-label'>Please leave your feedback below.</label>
-            <textarea class='col-md-8 offset-2 commentsFeedback' name='commentsFeedback' id='commentsFeedback' maxlength='500'></textarea>
+            <textarea class='col-md-8 offset-2 feedback' name='feedback' id='feedback' required='required' maxlength='500'></textarea>
         </div>      
         <div class='input'>
             <input class='btn btn-primary col-md-2 offset-5' id='submitBtn' type='button' value='Submit' />

@@ -52,28 +52,33 @@ if(!empty($_POST['name'])){
 	$safeInput = mysqli_real_escape_string($link,$input);
 	$query = "SELECT booktitle, isbn, author FROM bookinfo WHERE booktitle LIKE '%{$safeInput}%' OR isbn LIKE '%{$safeInput}%' OR author LIKE '%{$safeInput}%'";
 	$result = $db->dbCall($query);
-	$position=0;
-	print "<table style='width:50%'>";
-	print "<tr>";
-	print "<th>Book Title</th>
-		  <th>ISBN</th>
-		  <th>Author</th>";
-	print "</tr>";
-	while($position < count($result)){
+	if(!empty($result)){
+		$position=0;
+		print "<table style='width:50%'>";
 		print "<tr>";
-		print "<td>";
-		print $result[$position]['booktitle'] . " ";
-		print "</td>";
-		print "<td>";
-		print $result[$position]['isbn'] . " ";
-		print "</td>";
-		print "<td>";
-		print $result[$position]['author'] . " ";
-		print "</td>";
+		print "<th>Book Title</th>
+			  <th>ISBN</th>
+			  <th>Author</th>";
 		print "</tr>";
-		$position++;
+		while($position < count($result)){
+			print "<tr>";
+			print "<td>";
+			print $result[$position]['booktitle'] . " ";
+			print "</td>";
+			print "<td>";
+			print $result[$position]['isbn'] . " ";
+			print "</td>";
+			print "<td>";
+			print $result[$position]['author'] . " ";
+			print "</td>";
+			print "</tr>";
+			$position++;
+		}
+		print "</table>";		
+	}	
+	else{
+		print "Can not find search result.";
 	}
-	print "</table>";
 }else{
 	print "You must fill in a search term";
 }

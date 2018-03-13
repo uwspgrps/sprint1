@@ -7,7 +7,7 @@ $page->setBottomSection();
 print $page->getTopSection();
 print "
 <header>	
-  <h1>Home page of Sprint1</h1>
+  <h1>Home Page Sprint 1</h1>
   <nav>
 	<a href=index.php>Home</a>
     <a href=asgnabout.php>About</a>

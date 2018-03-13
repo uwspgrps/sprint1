@@ -22,7 +22,7 @@ print "
 	<form method='POST' action='results.php' onsubmit='return validateForm()'>
 	Enter an ISBN, Author or Title:  <input type='text' name='name' id='name' ><br />
 	<br />
-	<input type='submit' name='submit'>
+	<input type='submit' name='submit' value='Submit'>
 	</form>
       <p></p>
       <p></p>

@@ -46,41 +46,45 @@ if (!$db->getConnStatus()) {
 }
 //get POST input and assign to variable here
 //sanitize input
-if(!empty($_POST['name'])){
-	$link = $db->returnDB();
-	$input = $_POST['name'];
-	$safeInput = mysqli_real_escape_string($link,$input);
-	$query = "SELECT booktitle, isbn, author FROM bookinfo WHERE booktitle LIKE '%{$safeInput}%' OR isbn LIKE '%{$safeInput}%' OR author LIKE '%{$safeInput}%'";
-	$result = $db->dbCall($query);
-	if(!empty($result)){
-		$position=0;
-		print "<table style='width:50%'>";
-		print "<tr>";
-		print "<th>Book Title</th>
-			  <th>ISBN</th>
-			  <th>Author</th>";
-		print "</tr>";
-		while($position < count($result)){
+if(isset($_POST['name'])){
+	if(!empty($_POST['name'])){
+		$link = $db->returnDB();
+		$input = $_POST['name'];
+		$safeInput = mysqli_real_escape_string($link,$input);
+		$query = "SELECT booktitle, isbn, author FROM bookinfo WHERE booktitle LIKE '%{$safeInput}%' OR isbn LIKE '%{$safeInput}%' OR author LIKE '%{$safeInput}%'";
+		$result = $db->dbCall($query);
+		if(!empty($result)){
+			$position=0;
+			print "<table style='width:50%'>";
 			print "<tr>";
-			print "<td>";
-			print $result[$position]['booktitle'] . " ";
-			print "</td>";
-			print "<td>";
-			print $result[$position]['isbn'] . " ";
-			print "</td>";
-			print "<td>";
-			print $result[$position]['author'] . " ";
-			print "</td>";
+			print "<th>Book Title</th>
+				  <th>ISBN</th>
+				  <th>Author</th>";
 			print "</tr>";
-			$position++;
+			while($position < count($result)){
+				print "<tr>";
+				print "<td>";
+				print $result[$position]['booktitle'] . " ";
+				print "</td>";
+				print "<td>";
+				print $result[$position]['isbn'] . " ";
+				print "</td>";
+				print "<td>";
+				print $result[$position]['author'] . " ";
+				print "</td>";
+				print "</tr>";
+				$position++;
+			}
+			print "</table>";		
+		}	
+		else{
+			print "Can not find search result.";
 		}
-		print "</table>";		
-	}	
-	else{
-		print "Can not find search result.";
+	}else{
+		print "You must fill in a search term";
 	}
 }else{
-	print "You must fill in a search term";
+	print "Nothing was put in the search bar";
 }
 print "</div></main>
 	<footer>Sprint 1 Ken Lucas Peter</footer>

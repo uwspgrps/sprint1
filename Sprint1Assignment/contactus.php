@@ -9,6 +9,15 @@ $page->setHeadSection("<link rel='stylesheet' href='css/prettylab.css'>
 $page->setTopSection();
 $page->setBottomSection();
 print $page->getTopSection();
+print"<header>	
+  <h1>Contact Us Sprint 1</h1>
+  <nav>
+	<a href=index.php>Home</a>
+    <a href=asgnabout.php>About</a>
+    <a href=contactus.php>Contact</a>
+	<a href=booksearch.php>Search</a>
+  </nav>
+</header>";
 
 $db = new DB();
 if (!$db->getConnStatus()) {
@@ -16,13 +25,13 @@ if (!$db->getConnStatus()) {
   exit;
 }
 
-if(!empty($_POST)){
-    $link = $db->returnDB();
-    $firstName = $_POST['firstName'];    
-    $lastName = $_POST['lastName'];
-    $phoneNumber = $_POST['phoneNumber'];        
-    $email = $_POST['email'];
-    $feedback = $_POST['feedback'];	
+if(isset($_POST['submit'])){
+	$link = $db->returnDB();
+	$firstName = isset($_POST['firstName']) ? $_POST['firstName'] : '';
+	$lastName = isset($_POST['lastName']) ? $_POST['lastName'] : '';
+	$phoneNumber = isset($_POST['phoneNumber']) ? $_POST['phoneNumber'] : '';
+	$email = isset($_POST['email']) ? $_POST['email'] : '';
+	$feedback = isset($_POST['feedback']) ? $_POST['feedback'] : '';
 
 	$sanitizedEmail = filter_var($email,FILTER_SANITIZE_EMAIL);	
 	if (filter_var($sanitizedEmail,FILTER_VALIDATE_EMAIL)){
@@ -35,7 +44,7 @@ if(!empty($_POST)){
     $safePhoneNumberName = mysqli_real_escape_string($link,$phoneNumber);            
     $safeFeedback = mysqli_real_escape_string($link,$feedback);
 	
-	if(isset($safeFirstName) && isset($safeLastName) && isset($safePhoneNumberName) && isset($safeEmail) && isset($safeFeedback)){
+	if(($safeFirstName !== '') && ($safeLastName !== '') && ($safePhoneNumberName !== '') && ($safeEmail !== '') && ($safeFeedback !== '')){
 		$sqlInsert = "INSERT INTO contact_us (insertTime, firstName, lastName, phoneNumber, email, feedback)
 						VALUES
 						(now(), '$safeFirstName', '$safeLastName', '$safePhoneNumberName', '$safeEmail', '$safeFeedback')";
@@ -52,20 +61,10 @@ if(!empty($_POST)){
 }
 
 print "
-<header>	
-  <h1>Contact Us Sprint 1</h1>
-  <nav>
-	<a href=index.php>Home</a>
-    <a href=asgnabout.php>About</a>
-    <a href=contactus.php>Contact</a>
-	<a href=booksearch.php>Search</a>
-  </nav>
-</header>
 <main>
   <section>
     <article>
       <h2>Contact Us</h2>
-	  <div class='error'></div>
 	<form id='contactForm' method='POST' action='contactus.php' >        
 	    <div class='input'>
             <label class='col-md-3 col-form-label'>First Name:</label>
@@ -88,7 +87,7 @@ print "
             <textarea class='col-md-8 offset-2 feedback' name='feedback' id='feedback' required='required' maxlength='500'></textarea>
         </div>      
         <div class='input'>
-            <input class='btn btn-primary col-md-2 offset-5' id='submitBtn' type='button' value='Submit' />
+            <input class='btn btn-primary col-md-2 offset-5' id='submitBtn' type='submit' name='submit' value='Submit' />
         </div>         
 	</form>
     </article>
